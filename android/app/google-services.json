@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "138585733108",
+    "project_id": "pem-app-flutter",
+    "storage_bucket": "pem-app-flutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:138585733108:android:2b560a1db75a6c6a1e2ba1",
+        "android_client_info": {
+          "package_name": "com.example.pem_app_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "138585733108-f2md0ocacacdb0bi20c8bhskai9f7mbb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZUuk_nn8myJMJwSkti878gUm2-fqXuJ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "138585733108-f2md0ocacacdb0bi20c8bhskai9f7mbb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "138585733108-560pdvrphs1qmais1bag1r7nabnl0uu1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.hector.pemFlutter"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:138585733108:android:d9fbb9022b4bcba31e2ba1",
+        "android_client_info": {
+          "package_name": "com.hector.pemflutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "138585733108-f2md0ocacacdb0bi20c8bhskai9f7mbb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZUuk_nn8myJMJwSkti878gUm2-fqXuJ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "138585733108-f2md0ocacacdb0bi20c8bhskai9f7mbb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "138585733108-560pdvrphs1qmais1bag1r7nabnl0uu1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.hector.pemFlutter"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
