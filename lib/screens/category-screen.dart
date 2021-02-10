@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/rendering.dart';
 import 'package:pem_app_flutter/data-models/categories.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pem_app_flutter/data-models/users.dart';
 import 'package:pem_app_flutter/screens/subCatView.dart';
+import 'package:pem_app_flutter/shared-objects/categories.dart';
 import 'package:pem_app_flutter/shared-objects/customDrower.dart';
 import 'package:pem_app_flutter/shared-objects/customNavBar.dart';
 import 'package:pem_app_flutter/shared-objects/manage-connection.dart';
@@ -14,70 +15,14 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   final User logedinUser = currentUser();
-  final Firestore _dbinstance = getFirestoreDB();
-  List<Category> categories = [];
+  List<Category> categories = getCategories();
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   int _drowerIndex = 0;
 
-  _MainScreenState() {
-    getCategories();
-  }
-
-/**
- * Function gets the categories and subcategories, stored in firestore, values are stored in 
- * categories.
- * Function is [async]
- * Function returns [Future<void>]
- */
-  Future getCategories() async {
-    await _dbinstance
-        .collection('categories')
-        .getDocuments()
-        .then((querySnapshot) {
-      querySnapshot.documents.forEach((result) {
-        Category tmpCategory = categoryFromDocument(result);
-        getSubCategory(result.documentID, tmpCategory).then((value) {
-          value.forEach((element) {
-            tmpCategory.addSubCategory(element);
-          });
-        });
-        setState(() {
-          categories.add(tmpCategory);
-        });
-      });
-    });
-  }
-
-/**
- * [async] Function. 
- * Function returns [List<SubCategory] when subcategories are red from databse.
- * [documentName] : Document to search for subcategories.
- * [parent] : Subcategory parent.
- *
- */
-  Future<List<SubCategory>> getSubCategory(
-      String documentName, Category parent) async {
-    List<SubCategory> tmpSubCats = [];
-    await _dbinstance
-        .collection('categories')
-        .document(documentName)
-        .collection('subcategories')
-        .getDocuments()
-        .then((quarySnapshot) {
-      quarySnapshot.documents.forEach((document) {
-        SubCategory tmpSubCategory = subCategoryFromDocument(document, parent);
-        tmpSubCats.add(tmpSubCategory);
-      });
-    });
-    return tmpSubCats;
-  }
-
-/**
- * This function is used to build the tile button for the categories.
- * the function takes in a [category] and using the its properties, sets the
- * Button [color], [icon] [Text].
- * Function returns a [Widget]
- */
+/// This function is used to build the tile button for the categories.
+/// the function takes in a [category] and using the its properties, sets the
+/// Button [color], [icon] [Text].
+/// Function returns a [Widget]
   Widget buildButton(Category category) {
     return RaisedButton(
       elevation: 15,
@@ -113,14 +58,11 @@ class _MainScreenState extends State<MainScreen> {
     return buildPortrait();
   }
 
-/**
- * Function is used to build the user interface in PortraitMode.
- * In this view, the userinterface is layed out in a 2x3 box grid.
- */
+
+/// Function is used to build the user interface in PortraitMode.
+/// In this view, the user interface is layered out in a 2x3 box grid.
   Widget buildPortrait() {
-    return Hero(
-        tag: 'screen',
-        child: Scaffold(
+    return Scaffold(
           key: _scaffoldKey,
           drawer: buildDrower(),
           appBar: AppBar(
@@ -146,13 +88,8 @@ class _MainScreenState extends State<MainScreen> {
           ),
           bottomNavigationBar: CustomNavBar.buildNavBar(
               context: context, categories: categories),
-        ));
+        );
   }
-
-/**
- * Function used to show logout confirmation dialog.
- */
-
 /*
  *  Function builds the drawer used for the side navigation pane.
  */

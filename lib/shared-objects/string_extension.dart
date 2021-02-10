@@ -2,7 +2,9 @@ extension StringExtension on String {
   String capitalize() {
     if (this.isEmpty) {
       return this;
-    } else {
+    } else if (this.length == 1) {
+      return this[0].toUpperCase();
+    }else{
       return "${this[0].toUpperCase()}${this.substring(1)}";
     }
   }

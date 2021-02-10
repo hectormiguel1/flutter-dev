@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:pem_app_flutter/screens/login-screen.dart';
+import 'package:pem_app_flutter/shared-objects/categories.dart';
 
 void main() {
   runApp(MyApp());
+  initCategories();
+
 }
 
 class MyApp extends StatelessWidget {
@@ -11,7 +14,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'PEM',
+      darkTheme: darkMode(),
       theme: ThemeData(
+        brightness: Brightness.light,
         // This is the theme of your application.
         //
         // Try running your application with "flutter run". You'll see the
@@ -32,4 +37,23 @@ class MyApp extends StatelessWidget {
       home: LoginScreen(),
     );
   }
+
+  ThemeData darkMode() {
+    return ThemeData(
+      brightness: Brightness.dark,
+      primaryColor: Colors.blue[900],
+      accentColor: Colors.blue[700],
+      primarySwatch: Colors.blue,
+      cardColor: Colors.black,
+      canvasColor: Colors.black,
+      selectedRowColor: Colors.amber,
+      visualDensity: VisualDensity.compact,
+      primaryTextTheme: Typography.whiteCupertino,
+      textTheme: Typography.whiteCupertino,
+      iconTheme: IconThemeData(color: Colors.black),
+
+    );
+  }
 }
+
+

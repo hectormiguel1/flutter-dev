@@ -9,25 +9,23 @@ User _currentUser;
 
 User currentUser() => _currentUser;
 
-/**
- * Attempts to login user with [email] and [password]
- * Returns [User] on success [null] on failure.
- */
-Future<User> lgoinUserWithPassword(
+/// Attempts to login user with [email] and [password]
+/// Returns [User] on success [null] on failure.
+Future<User> loginUserWithPassword(
     {@required String password, @required String email}) async {
-  AuthResult result =
-      await _auth.signInWithEmailAndPassword(email: email, password: password);
+  try {
+    AuthResult result =
+    await _auth.signInWithEmailAndPassword(email: email, password: password);
+    String userUID = result.user.uid;
+    DocumentSnapshot user =
+    await _dbinstance.collection("Users").document(userUID).get();
 
-  if (result.user == null) {
+    _currentUser = getUserFromDecoment(user);
+
+    return _currentUser;
+  } catch (exception) {
     return null;
   }
-  String userUID = result.user.uid;
-  DocumentSnapshot user =
-      await _dbinstance.collection("Users").document(userUID).get();
-
-  _currentUser = getUserFromDecoment(user);
-
-  return _currentUser;
 }
 
 void signOut() {

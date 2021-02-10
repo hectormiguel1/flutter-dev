@@ -11,14 +11,14 @@ class CustomNavBar {
     Color bgColor = Colors.blue,
   }) {
     return BottomNavigationBar(
-      backgroundColor: bgColor,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark ? Theme.of(context).primaryColor : bgColor,
       items: [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
         BottomNavigationBarItem(icon: Icon(Icons.apps), label: "Subcategories"),
         BottomNavigationBarItem(icon: Icon(Icons.message), label: "Chat"),
       ],
       currentIndex: selectedIndex,
-      selectedItemColor: Colors.white,
+      selectedItemColor: Theme.of(context).selectedRowColor,
       onTap: (selection) {
         if (selection == selectedIndex) {
           //Do nothing
@@ -33,7 +33,7 @@ class CustomNavBar {
                 context,
                 MaterialPageRoute(
                     builder: (context) =>
-                        AllSubCategories(categories: categories)));
+                        AllSubCategories()));
           } else if (selection == 2) {
             //Do Move to Chat View
           }

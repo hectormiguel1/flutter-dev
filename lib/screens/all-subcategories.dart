@@ -2,22 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pem_app_flutter/data-models/categories.dart';
 import 'package:pem_app_flutter/screens/content.dart';
+import 'package:pem_app_flutter/shared-objects/categories.dart';
 import 'package:pem_app_flutter/shared-objects/customNavBar.dart';
 import 'package:pem_app_flutter/shared-objects/string_extension.dart';
 
 class AllSubCategories extends StatefulWidget {
-  List<Category> categories;
-
-  AllSubCategories({@required this.categories});
-
+  AllSubCategories();
   _AllSubCategoriesState createState() =>
-      _AllSubCategoriesState(categories: categories);
+      _AllSubCategoriesState();
 }
 
 class _AllSubCategoriesState extends State<AllSubCategories> {
-  List<Category> categories;
-
-  _AllSubCategoriesState({@required this.categories});
+  List<Category> categories = getCategories();
 
   Widget buildButtons(SubCategory subcat) {
     Widget icon = subcat.icon.isEmpty

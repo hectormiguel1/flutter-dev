@@ -59,9 +59,7 @@ class _SubCatViewState extends State<SubCatView> {
 
   @override
   Widget build(BuildContext context) {
-    return Hero(
-        tag: 'screen',
-        child: Scaffold(
+    return Scaffold(
           appBar: AppBar(
             title: Text(mainCategory.name.capitalize()),
             backgroundColor: mainCategory.iconColor,
@@ -71,6 +69,6 @@ class _SubCatViewState extends State<SubCatView> {
               context: context,
               bgColor: mainCategory.iconColor,
               selectedIndex: 1),
-        ));
+        );
   }
 }

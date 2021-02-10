@@ -34,6 +34,7 @@ dependencies:
   cloud_firestore: 
   toast: ^0.1.5
   flutter_svg: ^0.19.1
+  expandable: ^4.1.4
 
 
 

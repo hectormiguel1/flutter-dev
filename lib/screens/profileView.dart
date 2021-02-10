@@ -78,9 +78,6 @@ class _ProfielViewState extends State<ProfileView> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            SizedBox(
-              width: 20,
-            ),
             RaisedButton(
               splashColor: Colors.blue.shade100,
               elevation: 0,
@@ -153,7 +150,7 @@ class _ProfielViewState extends State<ProfileView> {
         SizedBox(
           height: 20,
         ),
-        buildDetailButtons(Icons.phone, "Phone Number:", user.email),
+        buildDetailButtons(Icons.phone, "Phone Number:", user.phoneNumber),
         SizedBox(
           height: 20,
         ),

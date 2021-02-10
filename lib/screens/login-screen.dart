@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pem_app_flutter/data-models/users.dart';
 import 'package:pem_app_flutter/screens/category-screen.dart';
 import 'package:pem_app_flutter/screens/register.dart';
+import 'package:pem_app_flutter/shared-objects/categories.dart';
 import 'package:pem_app_flutter/shared-objects/manage-connection.dart';
 import '../shared-objects/text-field.dart';
 import 'package:toast/toast.dart';
@@ -14,9 +15,9 @@ class LoginScreen extends StatelessWidget {
 
   Future<User> login(
       BuildContext context, String email, String password) async {
-    User result = await lgoinUserWithPassword(password: password, email: email);
+    User result = await loginUserWithPassword(password: password, email: email);
     if (result == null) {
-      Toast.show("Icorrect email or password!", context,
+      Toast.show("Incorrect email or password!", context,
           duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);
       return null;
     } else {
